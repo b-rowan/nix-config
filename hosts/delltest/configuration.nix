@@ -8,9 +8,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-    ../common/home-manager.nix
-    ../common/users.nix
-    ../common/locale.nix
+    ../common
   ];
 
   # Bootloader

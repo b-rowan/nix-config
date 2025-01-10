@@ -2,6 +2,7 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
+  outputs,
   lib,
   config,
   pkgs,
@@ -9,7 +10,7 @@
 }: {
   home = {
     username = lib.mkDefault "b-rowan";
-    homeDirectory = lib.mkDefault "/home/${username}";
+    homeDirectory = lib.mkDefault "/home/b-rowan";
   };
 
   # Add stuff for your user as you see fit:
