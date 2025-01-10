@@ -18,13 +18,23 @@
   outputs = {
     self,
     disko,
-    nixpkgs,
+    dotfiles,
     home-manager,
+    nixpkgs,
     ...
   } @ inputs: let
     inherit (self) outputs;
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    # NixOS configuration entrypoint
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});    # NixOS configuration entrypoint
+    overlays = import ./overlays {inherit inputs;};
     # Available through 'nixos-rebuild --flake .#delltest'
     nixosConfigurations = {
       delltest = nixpkgs.lib.nixosSystem {
