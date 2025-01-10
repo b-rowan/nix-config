@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    "${builtins.fetchTarball "https://github.com/nix-community/disko/commits/master.tar.gz"}/module.nix"
     ./disko.nix
     ./hardware-configuration.nix
     ../common/home-manager.nix
