@@ -41,13 +41,17 @@
         modules = [
           ./hosts/delltest
           inputs.disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
         ];
       };
     };
 
     homeConfigurations = {
       "b-rowan@delltest" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home/b-rowan/delltest.nix];
       };
