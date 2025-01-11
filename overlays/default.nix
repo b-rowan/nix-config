@@ -7,9 +7,9 @@
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev:
     {
-      # example = prev.example.overrideAttrs (oldAttrs: rec {
-      # ...
-      # });
+      nmt = prev.nmt.overrideAttrs (old: {
+        src = inputs.nixpkgs-stable.nmt;
+      });
     };
 
   stable-packages = final: _prev: {
